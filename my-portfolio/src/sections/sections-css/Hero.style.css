@@ -11,7 +11,30 @@
 }
 
 .animated-gradient {
+  position: relative;
   background: linear-gradient(135deg, #0f0c29, #302b63, #3a0ca3, #2c5364);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+}
+
+/* Fade the top and bottom edges into the page background so this section
+   blends into the black sections above/below instead of hard-cutting. */
+.animated-gradient::before,
+.animated-gradient::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  pointer-events: none;
+}
+
+.animated-gradient::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+}
+
+.animated-gradient::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-bg), transparent);
 }

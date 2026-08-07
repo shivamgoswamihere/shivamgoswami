@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Switch } from '@headlessui/react';
 import Icons from '../components/Icons'
-import ToggleButton from '../components/ToggleButton';
 
 export const Skills = () => {
   const [showTechnical, setShowTechnical] = useState(true);
@@ -36,7 +36,7 @@ export const Skills = () => {
     { name: 'Community Management', image: '' },
     { name: 'Public Speaking', image: '' },
     { name: 'Event Planning', image: '' },
-    { name: 'Problem Solving', image: 'problem-' },
+    { name: 'Problem Solving', image: '' },
     { name: 'Time Management', image: '' },
     { name: 'Communication', image: '' },
     {name:'Adaptability', image: ''},
@@ -54,52 +54,56 @@ export const Skills = () => {
   const skillsToShow = showTechnical ?  technical : soft ;
 
   return (
-    <section className="p-10 w-full flex  justify-center">
-      <div className="flex flex-col pt-3 align-middle justify-center w-1/2 gap-4">
-          <div className="flex align-middle justify-center">  
-              <h2 className="text-3xl font-semibold">Skills</h2>
-          </div>
+    <section className="p-10 w-full flex justify-center">
+      <div className="w-full max-w-3xl backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 flex flex-col gap-8">
 
-          <div className=" flex flex-col md:flex-row md:items-center md:text-2xl md:align-middle md:justify-center">
-            <span className="ml-4 text-xl font-medium">Technical</span>
+        <h2 className="text-3xl font-semibold text-center">Skills</h2>
 
-            <ToggleButton onClick={() => setShowTechnical(!showTechnical)}/>
-            
-            <span className="ml-3 text-2xl font-medium">Managerial</span>
-          </div>
+        <div className="flex items-center justify-center gap-3">
+          <span className={`text-lg font-medium transition-colors ${showTechnical ? "text-white" : "text-[#b6b7bb]"}`}>Technical</span>
 
-          <div className="flex flex-col md:flex-row align-middle justify-center w-full">
-            <div className=' h-full self-center justify-center  items-center  w-5/10'>
-            <span className='text-xl font-bold'>Tools</span>
+          {/* 44x44 hit area around a 28px-tall visual track (touch-target min). */}
+          <Switch
+            checked={!showTechnical}
+            onChange={() => setShowTechnical(!showTechnical)}
+            aria-label="Switch between technical and managerial skills"
+            className="group flex h-11 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full"
+          >
+            <span className="pointer-events-none flex h-7 w-14 items-center rounded-full border border-white/20 bg-white/10 transition-colors group-data-[checked]:border-transparent group-data-[checked]:bg-gradient-to-r group-data-[checked]:from-purple-500 group-data-[checked]:to-pink-600">
+              <span className="size-5 translate-x-1 rounded-full bg-white transition-transform duration-200 group-data-[checked]:translate-x-8" />
+            </span>
+          </Switch>
 
-            {skillsToShow.tools.map(skill => (
-              <div key={skill.name} className="flex justify-between items-center my-5 w-full">
-                    
-                    <div className="text-lg flex gap-2 w-2/3"><img src={skill.image} alt={skill.name} className="w-8 h-8" /> {skill.name}
-                    </div>
-                  </div>
-                ))}
+          <span className={`text-lg font-medium transition-colors ${!showTechnical ? "text-white" : "text-[#b6b7bb]"}`}>Managerial</span>
+        </div>
 
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-3">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">Tools</span>
+            <div className="grid grid-cols-2 gap-3">
+              {skillsToShow.tools.map(skill => (
+                <div key={skill.name} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-[#b6b7bb]">
+                  {skill.image && <img src={skill.image} alt={skill.name} className="w-5 h-5 shrink-0" />}
+                  <span className="truncate">{skill.name}</span>
+                </div>
+              ))}
             </div>
+          </div>
 
-            <div className=' w-1/3 h-full self-center justify-center items-center'>
-
-              <span className='text-xl font-bold'>Skills</span>
+          <div className="flex flex-col gap-3">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">Skills</span>
+            <div className="grid grid-cols-2 gap-3">
               {skillsToShow.skills.map(skill => (
-              
-              <div key={skill.name} className="flex justify-between items-center my-5 w-full">
-                  <div className="text-lg flex gap-2 justify-self-start justify-start justify-items-start w-full h-8">{showTechnical && <img src={skill.image} alt={skill.name} className="w-8 h-full" />} {skill.name}
-                  </div>
-                  </div>
-                   
-                ))}
-
+                <div key={skill.name} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-[#b6b7bb]">
+                  {skill.image && <img src={skill.image} alt={skill.name} className="w-5 h-5 shrink-0" />}
+                  <span className="truncate">{skill.name}</span>
+                </div>
+              ))}
             </div>
-
           </div>
         </div>
-                   
+
+      </div>
     </section>
   );
 };
-                  

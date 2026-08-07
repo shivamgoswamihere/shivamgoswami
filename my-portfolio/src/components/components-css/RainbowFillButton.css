@@ -41,6 +41,7 @@
   box-sizing: border-box;
   color: #000;
   display: block;
+  text-decoration: none;
   font-weight: 600;
   overflow: hidden;
   padding: 1.5rem 4rem;

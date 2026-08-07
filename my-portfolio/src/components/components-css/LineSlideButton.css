@@ -34,6 +34,7 @@
   --thickness: 2px;
   background: none;
   box-sizing: border-box;
+  text-decoration: none;
   -webkit-clip-path: polygon(
     0 0,
     100% 0,

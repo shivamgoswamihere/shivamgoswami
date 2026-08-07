@@ -41,10 +41,16 @@ export const Projects = () => (
     <h2 className="text-3xl font-semibold mb-6 m-auto">Projects</h2>
     <div className="space-y-4">
       {projects.map(proj => (
-        <div key={proj.route} className="border p-4 rounded-lg">
+        <div key={proj.route} className="rounded-lg border border-white/20 p-4 transition-colors hover:border-white/40">
           <h3 className="font-bold text-xl mb-2">{proj.heading}</h3>
-          <p className="mb-2">{proj.short_description}</p>
-            <NavLink to={`/projects/${proj.route}`}> <LineSlideButton text={"Details"}/></NavLink>
+          <p className="mb-2 text-[#b6b7bb]">{proj.short_description}</p>
+          <NavLink
+            to={`/projects/${proj.route}`}
+            className="inline-flex min-h-11 items-center"
+            aria-label={`View details for ${proj.heading}`}
+          >
+            <LineSlideButton text="Details"/>
+          </NavLink>
         </div>
       ))}
     </div>

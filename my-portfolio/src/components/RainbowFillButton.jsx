@@ -1,9 +1,18 @@
 import React from 'react'
 import './components-css/RainbowFillButton.css'
 
-const RainbowFillButton = ({text}) => {
+/* Renders a single <a>: previously a <button> wrapping an <a>, which is
+   invalid HTML (nested interactive elements) and gave two tab stops. */
+const RainbowFillButton = ({text, href = "https://wa.me/917248668648"}) => {
   return (
-    <button className="btn-55 shrink"><span><a href="https://wa.me/917248668648">{text}</a></span></button>
+    <a
+      className="btn-55 shrink"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>{text}</span>
+    </a>
   )
 }
 

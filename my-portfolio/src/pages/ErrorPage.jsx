@@ -1,39 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <section className="flex items-center justify-center min-h-screen bg-white font-serif">
-      <div className="container mx-auto text-center px-4">
-        <div className="relative">
-          <h1 className="text-8xl font-bold text-gray-800">404</h1>
-          <div
-            className="bg-cover bg-center h-80 flex items-center justify-center mx-70 "
-            style={{
-              backgroundImage:
-                "url(https://cdn.dribbble.com/userupload/33297865/file/original-ac054f83554cc65ca11f405d5ce92ae5.gif)",
-            }}
-          >
-          </div>
+    <section className="flex min-h-screen items-center justify-center px-4">
+      <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-xl">
+        <p
+          aria-hidden="true"
+          className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-7xl font-bold text-transparent sm:text-8xl"
+        >
+          404
+        </p>
 
-          <div>
-            <h3 className="text-2xl font-semibold text-gray-700">
-              Looks like you're lost
-            </h3>
-            <p className="text-gray-600 mt-2">
-              The page you are looking for is not available!
-            </p>
-            <a
-              href="/"
-              className="mt-4 inline-block bg-gray-700 text-white px-6 py-2 rounded-md hover:bg-green-600 transition duration-300"
-            >
-              Go to Home
-            </a>
-          </div>
-        </div>
+        <h1 className="mt-4 text-2xl font-semibold text-white">
+          Looks like you're lost
+        </h1>
+        <p className="mt-2 text-[#b6b7bb]">
+          The page you are looking for is not available.
+        </p>
+
+        {/* Client-side nav so we don't trigger a full page reload. */}
+        <Link
+          to="/"
+          className="mt-8 inline-flex min-h-11 items-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 px-6 font-medium text-white transition-opacity hover:opacity-90"
+        >
+          Go to Home
+        </Link>
       </div>
     </section>
   );
 };
-
 
 export default ErrorPage;

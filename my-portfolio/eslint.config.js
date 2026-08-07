@@ -23,7 +23,9 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Capitalized names cover JSX components; `motion` is lowercase but is
+// only referenced as <motion.span>, which core no-unused-vars can't see.
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|^motion$' }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

@@ -1,1 +1,50 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+/* ---- Theme tokens (single source of truth for the whole site) ---- */
+:root {
+  --color-bg: #000000;
+  --color-fg: #f0f0f0;
+  --color-muted: #b6b7bb;
+  --color-accent-from: #a855f7;
+  --color-accent-to: #db2777;
+  --font-display: "TheGoodMonolith", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  scroll-behavior: smooth;
+}
+
+/* Keyboard focus must always be visible (never rely on the UA default alone,
+   since several components sit on dark glass where it can be invisible). */
+:focus-visible {
+  outline: 2px solid var(--color-accent-from);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respect users who ask the OS to reduce motion. The site runs several
+   continuous animations (canvas spiral, WebGL aurora, gradient shift). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

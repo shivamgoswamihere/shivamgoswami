@@ -1,38 +1,32 @@
-import React,{useState} from 'react';
-import './App.css';
+import React from 'react';
 import { NavBar } from './sections/NavBar';
 import { Hero } from './sections/Hero';
 import { Certifications } from './sections/Certifications';
+import { Experience } from './sections/Experience';
 import { Projects } from './sections/Projects';
 import { Events } from './sections/Events';
 import { Contact } from './sections/Contact';
 import { Skills } from './sections/Skills';
-import WelcomeModal from './sections/WelcomeModal';
 import SpiralGalaxy from './components/SpiralGalaxy';
 import SplineWithLoader from './components/SplineWithLoader';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DetailsPage from './pages/DetailsPage';
 import ErrorPage from './pages/ErrorPage';
 import ScrollToTop from './components/ScrollToTop';
-
-
-
-
-
-
-const HomePage = () => {
-    const [userName, setUserName] = useState("");
-  return (
+const HomePage = () => (
 <>
- {/* <WelcomeModal onSaveName={setUserName} /> */}
   <NavBar/>
 
   <section id="Home">
-    <SplineWithLoader username={userName}/>
+    <SplineWithLoader/>
   </section>
 
   <section id="About">
-    <SpiralGalaxy username={userName}/>
+    <SpiralGalaxy/>
+  </section>
+
+  <section id="Experience">
+    <Experience/>
   </section>
 
   <section id="Projects">
@@ -61,8 +55,7 @@ const HomePage = () => {
   </section>
 
 </>
-  )
-};
+);
 
 const App=()=>{
   

@@ -25,6 +25,9 @@ const SplitText = ({
     const el = ref.current;
     if (!el) return;
 
+    // Reduced motion: leave the text in its final state, skip the reveal.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const absoluteLines = splitType === "lines";
     if (absoluteLines) el.style.position = "relative";
 

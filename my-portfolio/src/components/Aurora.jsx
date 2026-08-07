@@ -185,7 +185,14 @@ export default function Aurora(props) {
       });
       renderer.render({ scene: mesh });
     };
-    animateId = requestAnimationFrame(update);
+
+    // Reduced motion: render one static frame instead of an endless shader loop.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      renderer.render({ scene: mesh });
+    } else {
+      animateId = requestAnimationFrame(update);
+    }
 
     resize();
 

@@ -1,17 +1,11 @@
 import React,{ useState } from "react";
 import Spline from "@splinetool/react-spline";
-import CircularText from './CircularText';
 import SplitText from "./SplitText";
 
-const handleAnimationComplete = () => {
-  console.log('All letters have animated!');
-};
+const handleAnimationComplete = () => {};
 
-
-
-export default function SplineWithLoader({username}) {
+export default function SplineWithLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
-  let message = "Hello," + (username ? username : 'World!')
   return (
      <section className="relative w-full h-[125vh] overflow-hidden">
       {/* Spline Background */}
@@ -26,9 +20,14 @@ export default function SplineWithLoader({username}) {
 
       {/* Content Over Spline */}
       <div className="relative z-10 flex flex-col items-center justify-center h-[10%] text-white text-center">
-        <h1 className=" font-bold drop-shadow-md">
+        {/* The page's single <h1>: meaningful for SEO/screen readers.
+            The animated greeting below it is decorative. */}
+        <h1 className="sr-only">
+          Shivam Goswami — MERN Stack Developer &amp; Community Builder
+        </h1>
+        <div className="font-bold drop-shadow-md" aria-hidden="true">
             <SplitText
-  text={message}
+  text="Hello, World!"
   className="text-2xl font-semibold text-center"
   delay={100}
   duration={0.6}
@@ -41,12 +40,12 @@ export default function SplineWithLoader({username}) {
   textAlign="center"
   onLetterAnimationComplete={handleAnimationComplete}
 />
-            </h1>
-        <p className="text-gray-300">Crafting with code, caffeine & curiosity.</p>
+            </div>
+        <p className="text-gray-300">Crafting with code, caffeine &amp; curiosity.</p>
       </div>
       <div className="absolute bottom-35 right-2  w-40 h-10 z-10 flex flex-col justify-center align-middle rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 text-2xs font-bold text-black" >
         <p className="h-6/10 pb-1 px-2 ">BUILT BY A DEV</p>
-        <p className="h-6/10 pb-1 px-2 ">BUILT FOR {username?username:'YOU'} </p>
+        <p className="h-6/10 pb-1 px-2 ">BUILT FOR YOU</p>
 </div>
     </section>
   );

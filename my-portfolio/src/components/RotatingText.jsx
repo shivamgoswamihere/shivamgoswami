@@ -154,6 +154,8 @@ const RotatingText = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (!auto) return;
+    // Reduced motion: don't cycle text on a timer.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const intervalId = setInterval(next, rotationInterval);
     return () => clearInterval(intervalId);
   }, [next, rotationInterval, auto]);

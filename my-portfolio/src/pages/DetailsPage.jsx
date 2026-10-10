@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '../sections/Projects.jsx';
 import { events } from '../sections/Events.jsx';
@@ -46,9 +45,9 @@ const DetailsPage = () => {
 
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/3">
-            <Section heading={detail.sub_heading_1} items={detail.description_1} />
-            <Section heading={detail.sub_heading_2} items={detail.description_2} />
-            <Section heading={detail.sub_heading_3} items={detail.description_3} />
+            {detail.sections.map((section) => (
+              <Section key={section.heading} {...section} />
+            ))}
           </div>
 
           <div className={`flex w-full flex-col gap-4 lg:w-2/3 ${panel} my-6 lg:ml-3`}>

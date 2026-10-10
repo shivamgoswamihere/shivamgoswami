@@ -1,4 +1,3 @@
-import React from 'react';
 
 /* Newest job first; the first entry is treated as the current role. */
 const experience = [
@@ -8,7 +7,6 @@ const experience = [
     period: "July 2025 — Present",
     projects: [
       {
-        name: "Amura",
         stack: ["React 18", "TypeScript", "Redux Toolkit", "React Query", "MUI", "Node.js", "DynamoDB", "Vitest", "Jest", "Jenkins"],
         highlights: [
           "Shipped 10+ features and fixed 80+ bugs within a year on a production healthcare web platform, using React 18, TypeScript, Redux Toolkit, React Query and MUI, with unit tests in Vitest and Jest.",

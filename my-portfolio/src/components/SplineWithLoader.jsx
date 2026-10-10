@@ -1,8 +1,6 @@
-import React,{ useState } from "react";
+import { useState } from "react";
 import Spline from "@splinetool/react-spline";
 import SplitText from "./SplitText";
-
-const handleAnimationComplete = () => {};
 
 export default function SplineWithLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,20 +24,7 @@ export default function SplineWithLoader() {
           Shivam Goswami — MERN Stack Developer &amp; Community Builder
         </h1>
         <div className="font-bold drop-shadow-md" aria-hidden="true">
-            <SplitText
-  text="Hello, World!"
-  className="text-2xl font-semibold text-center"
-  delay={100}
-  duration={0.6}
-  ease="power3.out"
-  splitType="chars"
-  from={{ opacity: 0, y: 40 }}
-  to={{ opacity: 1, y: 0 }}
-  threshold={0.1}
-  rootMargin="-100px"
-  textAlign="center"
-  onLetterAnimationComplete={handleAnimationComplete}
-/>
+            <SplitText text="Hello, World!" className="text-2xl font-semibold" />
             </div>
         <p className="text-gray-300">Crafting with code, caffeine &amp; curiosity.</p>
       </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import './components-css/RainbowFillButton.css'
 
 /* Renders a single <a>: previously a <button> wrapping an <a>, which is

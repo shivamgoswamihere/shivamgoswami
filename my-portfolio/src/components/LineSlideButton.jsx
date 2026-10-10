@@ -1,4 +1,3 @@
-import React from 'react'
 import './components-css/LineSlideButton.css'
 
 /* Renders a <span>, not a <button>: every usage wraps this in an interactive

@@ -1,4 +1,3 @@
-import React from 'react';
 import "./sections-css/Hero.style.css";
 import RainbowFillButton from '../components/RainbowFillButton';
 
@@ -15,8 +14,3 @@ export const Hero = () => (
         </div>
         </div>
 );
-
-
-
-
-

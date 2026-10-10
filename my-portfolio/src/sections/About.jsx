@@ -1,9 +1,9 @@
-import React from 'react';
-import ShivamDP from '../assets/Shivam-DP.jpg'; // Adjust the path as necessary
+import ShivamDP from '../assets/Shivam-DP.jpg';
 import RotatingText from '../components/RotatingText.jsx'
+import { socials } from './Contact';
 
 export const About = () => (
-  <section className="data-scroll-section">
+  <section>
     <h2 className="sr-only">About</h2>
     <div className="flex flex-col md:flex-row items-center self-center">
       <div className="flex-1 mb-6 md:mb-0 md:mr-10">
@@ -12,7 +12,6 @@ export const About = () => (
             <RotatingText
               texts={['Shivam', 'Developer', 'Community Builder', 'Human!']}
               mainClassName="px-2 sm:px-2 md:px-4 text-white overflow-hidden py-0.5 sm:py-0.5 md:py-1 justify-center rounded-lg bg-black text-2xl"
-              staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-120%" }}
@@ -24,19 +23,16 @@ export const About = () => (
           </div>
           A curious dev on a mission to turn coffee into code and bugs into features. I live for clean UI, smooth logic, and that sweet “it finally works” moment. Let's make the web less boring, one line at a time.
           <div className="flex flex-wrap gap-3 mt-4">
-            {[{icon:"https://img.icons8.com/color/48/linkedin.png", account:"LinkedIn", link:"https://www.linkedin.com/in/shivamgoswami-/"},
-            {icon:"https://img.icons8.com/color/48/twitterx--v1.png", account:"Twitter", link:"https://twitter.com/ShivamGoswami_"},
-            {icon:"https://img.icons8.com/color/48/hashnode.png", account:"Hashnode", link:"https://hashnode.com/@shivamgoswami"}
-            ].map(social => (
+            {socials.filter(s => ['LinkedIn', 'Twitter', 'Hashnode'].includes(s.name)).map(social => (
               <a
-                key={social.account}
+                key={social.name}
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gray-700 px-4 text-base transition-colors hover:bg-gray-600"
               >
                 <img src={social.icon} alt="" aria-hidden="true" className="h-6 w-6" />
-                <span>{social.account}</span>
+                <span>{social.name}</span>
               </a>
           ))}
           </div>

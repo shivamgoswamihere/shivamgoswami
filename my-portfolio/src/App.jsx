@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavBar } from './sections/NavBar';
 import { Hero } from './sections/Hero';
 import { Certifications } from './sections/Certifications';

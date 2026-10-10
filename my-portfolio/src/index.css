@@ -32,10 +32,6 @@ body {
 /* Respect users who ask the OS to reduce motion. The site runs several
    continuous animations (canvas spiral, WebGL aurora, gradient shift). */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   body {
     scroll-behavior: auto;
   }

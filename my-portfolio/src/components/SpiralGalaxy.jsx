@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { About } from '../sections/About';
 
 const PARTICLE_COUNT = 200;
@@ -7,7 +7,6 @@ const ROTATION_SPEED = 0.006;
 
 const SpiralGalaxy = () => {
   const containerRef = useRef(null);
-  const observerRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -132,17 +131,17 @@ const SpiralGalaxy = () => {
       animationId = null;
     };
 
+    let observer;
     if (reduceMotion) {
       draw(0); // one static frame, no loop
     } else {
       // Don't burn CPU/battery animating a full-screen canvas that is
       // scrolled out of view.
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         ([entry]) => (entry.isIntersecting ? start() : stop()),
         { threshold: 0 }
       );
       observer.observe(container);
-      observerRef.current = observer;
     }
 
     const handleResize = () => {
@@ -156,7 +155,7 @@ const SpiralGalaxy = () => {
 
     return () => {
       stop();
-      observerRef.current?.disconnect();
+      observer?.disconnect();
       window.removeEventListener("resize", handleResize);
       if (container.contains(canvas)) {
         container.removeChild(canvas);

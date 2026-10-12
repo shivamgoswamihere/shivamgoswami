@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import logo from "../assets/SG-logo.png";
 import LineSlideButton from "../components/LineSlideButton";
 import { RESUME_URL } from "./Contact";
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setHidden(currentY > lastScrollY.current && currentY > 80);
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav aria-label="Main" className="sticky top-0 mx-4 z-50">
+    <nav aria-label="Main" className={`sticky top-0 mx-4 z-50 transition-transform duration-300 ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
       <div className="flex justify-between items-center shadow-md backdrop-blur-xl bg-white/5 border border-t-0 border-gray-500 p-2 rounded-b-2xl ">
         {/* Logo */}
         <div className="text-2xl font-bold">

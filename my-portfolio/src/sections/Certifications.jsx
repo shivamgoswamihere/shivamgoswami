@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 
 // Strongest first.
 const certifications = [
@@ -25,7 +26,7 @@ const certifications = [
 
 export const Certifications = () => (
   <section className="p-10">
-    <h2 className="text-3xl font-semibold mb-6">Certifications</h2>
+    <RevealHeading text="Certifications" className="text-3xl font-semibold mb-6" />
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {certifications.map(cert => (
         /* The whole card is the link, not just the text inside it. */

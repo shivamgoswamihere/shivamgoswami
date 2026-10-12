@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 import { NavLink } from 'react-router-dom';
 import LineSlideButton from '../components/LineSlideButton';
 import ProjectMedia from '../components/ProjectMedia';
@@ -40,7 +41,7 @@ const groups = [
 
 export const Projects = () => (
   <section className="p-10">
-    <h2 className="text-3xl font-semibold mb-6 m-auto">Projects</h2>
+    <RevealHeading text="Projects" className="text-3xl font-semibold mb-6 m-auto" />
     {groups.map(group => (
       <div key={group.kind} className="mb-8">
         <h3 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-lg font-semibold text-transparent">{group.title}</h3>

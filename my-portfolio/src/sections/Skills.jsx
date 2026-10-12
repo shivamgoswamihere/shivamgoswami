@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 import { useState } from 'react';
 import Icons from '../components/Icons'
 
@@ -51,7 +52,7 @@ export const Skills = () => {
     <section className="p-10 w-full flex justify-center">
       <div className="w-full max-w-3xl backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 flex flex-col gap-8">
 
-        <h2 className="text-3xl font-semibold text-center">Skills</h2>
+        <RevealHeading text="Skills" className="text-3xl font-semibold text-center" />
 
         <div className="flex items-center justify-center gap-3">
           <span className={`text-lg font-medium transition-colors ${showTechnical ? "text-white" : "text-[#b6b7bb]"}`}>Technical</span>

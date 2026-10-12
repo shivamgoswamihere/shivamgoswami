@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 
 /* Newest job first. Dates are "YYYY-MM"; no `end` means current role. */
 const experience = [
@@ -85,7 +86,7 @@ const emphasizeMetrics = text =>
 
 export const Experience = () => (
   <section className="p-10">
-    <h2 className="text-3xl font-semibold mb-6">Experience</h2>
+    <RevealHeading text="Experience" className="text-3xl font-semibold mb-6" />
 
     <dl className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
       {stats.map(stat => (

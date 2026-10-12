@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 import { useState } from 'react';
 
 export const EMAIL = "shivamg1008@gmail.com";
@@ -25,7 +26,7 @@ export const Contact = () => {
 
   return (
     <section className="p-10 w-full flex flex-col items-center text-center">
-      <h2 className="text-3xl font-semibold mb-2">Connect With Me</h2>
+      <RevealHeading text="Connect With Me" className="text-3xl font-semibold mb-2" />
       <p className="mb-6 text-[#b6b7bb]">Open to frontend / full-stack engineering roles.</p>
 
       <div className="mb-8 flex flex-wrap items-center justify-center gap-3">

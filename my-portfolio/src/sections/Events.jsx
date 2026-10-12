@@ -1,3 +1,4 @@
+import RevealHeading from '../components/RevealHeading';
 import { NavLink } from 'react-router-dom';
 import EventMedia  from '../components/EventMedia';
 import LineSlideButton from '../components/LineSlideButton';
@@ -112,7 +113,7 @@ export const events=[
 
 export const Events = () => (
   <section className="p-10">
-    <h2 className="text-3xl font-semibold mb-6">Community & Events</h2>
+    <RevealHeading text="Community & Events" className="text-3xl font-semibold mb-6" />
     <div className="space-y-4">
       {events.map(event => (
         <div key={event.route} className="rounded-lg border border-white/20 p-4 transition-colors hover:border-white/40">

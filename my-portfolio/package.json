@@ -13,6 +13,7 @@
     "@anthropic-ai/claude-code": "^2.1.296",
     "@splinetool/react-spline": "^4.0.0",
     "@tailwindcss/vite": "^4.1.8",
+    "animejs": "^4.5.0",
     "framer-motion": "^12.17.0",
     "gsap": "^3.13.0",
     "lenis": "^1.3.26",

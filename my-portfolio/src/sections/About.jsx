@@ -3,11 +3,11 @@ import RotatingText from '../components/RotatingText.jsx'
 import { socials } from './Contact';
 
 export const About = () => (
-  <section>
+  <section className="px-6">
     <h2 className="sr-only">About</h2>
     <div className="flex flex-col md:flex-row items-center self-center">
       <div className="flex-1 mb-6 md:mb-0 md:mr-10">
-        <div className="text-lg mb-4 w-2xs">
+        <div className="text-lg mb-4 max-w-md">
           <div className='text-2xl flex gap-3 items-center'>I'm
             <RotatingText
               texts={['Shivam', 'Developer', 'Community Builder', 'Human!']}
@@ -21,7 +21,7 @@ export const About = () => (
               rotationInterval={2000}
             /> 
           </div>
-          A curious dev on a mission to turn coffee into code and bugs into features. I live for clean UI, smooth logic, and that sweet “it finally works” moment. Let's make the web less boring, one line at a time.
+          Software engineer with 2+ years shipping production React &amp; TypeScript. I care about clean UI, typed code and that sweet “it finally works” moment. Outside work, I build developer communities through GDSC and tech events.
           <div className="flex flex-wrap gap-3 mt-4">
             {socials.filter(s => ['LinkedIn', 'Twitter', 'Hashnode'].includes(s.name)).map(social => (
               <a

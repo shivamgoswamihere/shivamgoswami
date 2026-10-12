@@ -44,13 +44,13 @@ const DetailsPage = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/3">
+          <div className={`w-full ${detail.media.length ? "lg:w-1/3" : "grid gap-x-6 lg:grid-cols-3"}`}>
             {detail.sections.map((section) => (
               <Section key={section.heading} {...section} />
             ))}
           </div>
 
-          <div className={`flex w-full flex-col gap-4 lg:w-2/3 ${panel} my-6 lg:ml-3`}>
+          {detail.media.length > 0 && <div className={`flex w-full flex-col gap-4 lg:w-2/3 ${panel} my-6 lg:ml-3`}>
             {/* Mapped, so a project with fewer than 3 images doesn't render
                 broken <img> tags. */}
             {detail.media.map((src, i) => (
@@ -62,7 +62,7 @@ const DetailsPage = () => {
                 className="w-full max-w-3xl rounded-lg object-contain"
               />
             ))}
-          </div>
+          </div>}
         </div>
 
         <Link

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import logo from "../assets/SG-logo.png";
 import LineSlideButton from "../components/LineSlideButton";
+import { RESUME_URL } from "./Contact";
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -52,11 +53,11 @@ export const NavBar = () => {
         {/* Nav Items */}
         <ul
           id="primary-navigation"
-          className={`flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-6 absolute md:static top-[64px] left-0 w-full md:w-auto bg-[#131212d5] md:bg-transparent p-4 md:p-0 rounded-md md:rounded-none transition-all duration-300 ease-in-out ${
+          className={`flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-6 md:items-center absolute md:static top-[64px] left-0 w-full md:w-auto bg-[#131212d5] md:bg-transparent p-4 md:p-0 rounded-md md:rounded-none transition-all duration-300 ease-in-out ${
             isOpen ? "flex" : "hidden"
           }`}
         >
-          {["Home", "About", "Experience", "Projects", "Mission" ,"Skills", "Events", "Certifications", "Contact"].map(
+          {["Home", "Experience", "Projects", "Skills", "Contact"].map(
             (item) => (
               <li
                 key={item}
@@ -69,13 +70,23 @@ export const NavBar = () => {
                   offset={-60}
                   spy={true}
                   activeClass="text-blue-500"
-                  onSetActive={() => setIsOpen(false)} // if you want to auto-close menu on click
+                  onClick={() => setIsOpen(false)}
                   className="flex min-h-11 items-center md:min-h-0"
                 ><LineSlideButton text={item}/>
                 </Link>
               </li>
             )
           )}
+          <li>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 md:min-h-9"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

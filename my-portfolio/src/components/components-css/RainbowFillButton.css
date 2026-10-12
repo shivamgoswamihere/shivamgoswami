@@ -18,7 +18,7 @@
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 100%;
-  min-width: 40%;
+  min-width: 14rem; /* label is absolutely positioned, so it can't size the button */
   line-height: 1.5;
   margin: 0;
   padding: 0;

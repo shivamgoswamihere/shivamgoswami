@@ -1,37 +1,62 @@
-import { useState } from "react";
-import Spline from "@splinetool/react-spline";
+import { lazy, Suspense, useState } from "react";
+import { Link } from "react-scroll";
 import SplitText from "./SplitText";
+import RainbowFillButton from "./RainbowFillButton";
+import { RESUME_URL } from "../sections/Contact";
+
+// Spline (+ its physics engine) is ~2 MB: load it after the hero text paints.
+const Spline = lazy(() => import("@splinetool/react-spline"));
 
 export default function SplineWithLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
-     <section className="relative w-full h-[125vh] overflow-hidden">
-      {/* Spline Background */}
-      <div className="absolute inset-0 z-0 -translate-y-30 ">
-        {!isLoaded && <LoadingSpinner />}
-        <Spline
-          scene="https://prod.spline.design/rRYxxPq4P8BG2Flk/scene.splinecode"
-          onLoad={() => setIsLoaded(true)}
-          className="w-full h-full"
-        />
+    <section className="relative flex w-full flex-col overflow-hidden">
+      {/* Intro text sits above the scene (z-10). The scene keeps a fixed height so the
+          whole bot and its floor always fit; Spline scales it by width, which leaves
+          empty space above and below the bot; it's pulled up behind the text so the
+          full floor circle shows instead of being cut off. */}
+      <div className="relative z-10 flex flex-col items-center gap-3 px-4 pt-12 sm:pt-16 text-white text-center">
+        <div className="drop-shadow-md" aria-hidden="true">
+          <SplitText text="Hello, World!" className="text-lg font-semibold text-[#b6b7bb]" />
+        </div>
+        <h1 className="text-4xl font-bold sm:text-5xl drop-shadow-md">Shivam Goswami</h1>
+        <p className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-xl font-semibold text-transparent">
+          Software Engineer
+        </p>
+        <p className="max-w-xl text-gray-300">
+          2+ years building production React &amp; TypeScript apps.
+        </p>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
+          <RainbowFillButton text="Download Resume" href={RESUME_URL} />
+          <Link
+            to="Contact"
+            href="#Contact"
+            smooth={true}
+            duration={300}
+            offset={-60}
+            className="inline-flex min-h-11 cursor-pointer items-center rounded-lg border border-white/30 px-5 transition-colors hover:bg-white/10"
+          >
+            Contact me
+          </Link>
+        </div>
       </div>
 
-      {/* Content Over Spline */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-[10%] text-white text-center">
-        {/* The page's single <h1>: meaningful for SEO/screen readers.
-            The animated greeting below it is decorative. */}
-        <h1 className="sr-only">
-          Shivam Goswami — MERN Stack Developer &amp; Community Builder
-        </h1>
-        <div className="font-bold drop-shadow-md" aria-hidden="true">
-            <SplitText text="Hello, World!" className="text-2xl font-semibold" />
-            </div>
-        <p className="text-gray-300">Crafting with code, caffeine &amp; curiosity.</p>
+      <div className="relative -mt-52 h-[52rem]">
+        {!isLoaded && <LoadingSpinner />}
+        <Suspense fallback={null}>
+          <Spline
+            scene="https://prod.spline.design/rRYxxPq4P8BG2Flk/scene.splinecode"
+            onLoad={() => setIsLoaded(true)}
+            className="absolute inset-0"
+          />
+        </Suspense>
       </div>
-      <div className="absolute bottom-35 right-2  w-40 h-10 z-10 flex flex-col justify-center align-middle rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 text-2xs font-bold text-black" >
-        <p className="h-6/10 pb-1 px-2 ">BUILT BY A DEV</p>
-        <p className="h-6/10 pb-1 px-2 ">BUILT FOR YOU</p>
-</div>
+
+      {/* Sits exactly over Spline's "Built with Spline" watermark (bottom-right of the canvas). */}
+      <div className="absolute bottom-3 right-3 z-10 flex h-11 w-40 flex-col justify-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 px-3 text-xs font-bold text-black">
+        <p>BUILT BY A DEV</p>
+        <p>BUILT FOR YOU</p>
+      </div>
     </section>
   );
 }

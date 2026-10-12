@@ -4,25 +4,27 @@ import Icons from '../components/Icons'
 const technical = {
   Tools: [
     { name: 'VS Code', image: Icons.vscode },
-    { name: 'Github', image: Icons.github },
     { name: 'Git', image: Icons.git },
-    { name: 'Mongoose', image: Icons.mongoose },
-    { name: 'NPM', image: Icons.npm },
-    { name: 'Figma', image: Icons.figma },
-    { name: 'Open AI', image: Icons.openai },
+    { name: 'Github', image: Icons.github },
+    { name: 'Jenkins' },
     { name: 'Postman', image: Icons.postman },
+    { name: 'Claude AI' },
+    { name: 'Vite', image: Icons.vitejs },
+    { name: 'Figma', image: Icons.figma },
   ],
   Skills: [
-    { name: 'HTML', image: Icons.html5 },
-    { name: 'CSS', image: Icons.css3 },
+    { name: 'TypeScript' },
     { name: 'JavaScript', image: Icons.js },
     { name: 'React.js', image: Icons.react },
-    { name: 'Redux', image: Icons.redux },
+    { name: 'Redux Toolkit', image: Icons.redux },
+    { name: 'React Query' },
+    { name: 'MUI' },
+    { name: 'Tailwind CSS', image: Icons.tailwindcss },
     { name: 'Node.js', image: Icons.nodejs },
     { name: 'Express.js', image: Icons.expressjs },
-    { name: 'SQL', image: Icons.mysql },
+    { name: 'AWS DynamoDB' },
     { name: 'MongoDB', image: Icons.mongodb },
-    { name: 'Jest', image: Icons.jest },
+    { name: 'Vitest / Jest', image: Icons.jest },
   ],
 };
 
@@ -38,7 +40,7 @@ const soft = {
   Skills: [
     'Team Management', 'Leadership', 'Community Management', 'Public Speaking', 'Event Planning',
     'Problem Solving', 'Time Management', 'Communication', 'Adaptability', 'Collaboration',
-  ].map(name => ({ name })),
+  ].map(name => ({ name, plain: true })),
 };
 
 export const Skills = () => {
@@ -78,8 +80,10 @@ export const Skills = () => {
               <div className="grid grid-cols-2 gap-3">
                 {items.map(skill => (
                   <div key={skill.name} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-[#b6b7bb]">
-                    {skill.image && <img src={skill.image} alt={skill.name} className="w-5 h-5 shrink-0" />}
-                    <span className="truncate">{skill.name}</span>
+                    {skill.image
+                      ? <img src={skill.image} alt="" className="w-5 h-5 shrink-0" />
+                      : !skill.plain && <span aria-hidden="true" className="grid size-5 shrink-0 place-items-center rounded bg-white/10 text-[10px] font-bold text-white">{skill.name.slice(0, 2)}</span>}
+                    <span className="leading-tight">{skill.name}</span>
                   </div>
                 ))}
               </div>

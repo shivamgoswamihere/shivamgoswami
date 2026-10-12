@@ -8,6 +8,7 @@
   --color-accent-from: #a855f7;
   --color-accent-to: #db2777;
   --font-display: "TheGoodMonolith", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -17,8 +18,13 @@ html {
 body {
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   scroll-behavior: smooth;
+}
+
+/* Monospace display font for headings and nav only; long body copy reads better in a sans. */
+h1, h2, h3, h4, nav {
+  font-family: var(--font-display);
 }
 
 /* Keyboard focus must always be visible (never rely on the UA default alone,

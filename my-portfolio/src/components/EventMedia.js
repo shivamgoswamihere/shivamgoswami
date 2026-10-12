@@ -1,6 +1,6 @@
 import clublogo from '../assets/events/GDSC/clublogo.png'
-import gdscgraduation from '../assets/events/GDSC/gdscgraduation.png'
-import graduationcertificate from '../assets/events/GDSC/graduationcertificate.jpg'
+import gdscgraduation from '../assets/events/GDSC/gdscgraduation.webp'
+import graduationcertificate from '../assets/events/GDSC/graduationcertificate.webp'
 
 import organisermail from '../assets/events/WOW/organisermail.png'
 import shivamstage from '../assets/events/WOW/shivamstage.jpeg'

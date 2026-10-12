@@ -54,20 +54,24 @@ const HomePage = () => (
 </>
 );
 
-const App=()=>{
-  
-  return(
-     <BrowserRouter> 
-     <ScrollToTop />
-      <Suspense fallback={null}>
-      <Routes> 
-        <Route path="/" element={<HomePage />}></Route> 
-        <Route path="/projects/:slug" element={<DetailsPage />}></Route>
-        <Route path="/events/:slug" element={<DetailsPage />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-      </Routes> 
-      </Suspense>
-    </BrowserRouter> 
-  )
-}
+import 'lenis/dist/lenis.css';
+import { ReactLenis } from 'lenis/react';
+
+const App = () => {
+  return (
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
+      <BrowserRouter> 
+        <ScrollToTop />
+        <Suspense fallback={null}>
+          <Routes> 
+            <Route path="/" element={<HomePage />} /> 
+            <Route path="/projects/:slug" element={<DetailsPage />} />
+            <Route path="/events/:slug" element={<DetailsPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes> 
+        </Suspense>
+      </BrowserRouter> 
+    </ReactLenis>
+  );
+};
 export default App;

@@ -19,7 +19,6 @@ body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-body);
-  scroll-behavior: smooth;
 }
 
 /* Monospace display font for headings and nav only; long body copy reads better in a sans. */

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from "react";
-import { Link } from "react-scroll";
+import { useLenis } from "lenis/react";
 import SplitText from "./SplitText";
 import RainbowFillButton from "./RainbowFillButton";
 import { RESUME_URL } from "../sections/Contact";
@@ -9,6 +9,17 @@ const Spline = lazy(() => import("@splinetool/react-spline"));
 
 export default function SplineWithLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const lenis = useLenis();
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo("#Contact", { offset: -70, duration: 1.2 });
+    } else {
+      document.querySelector("#Contact")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative flex w-full flex-col overflow-hidden">
       {/* Intro text sits above the scene (z-10). The scene keeps a fixed height so the
@@ -28,16 +39,13 @@ export default function SplineWithLoader() {
         </p>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
           <RainbowFillButton text="Download Resume" href={RESUME_URL} />
-          <Link
-            to="Contact"
+          <a
             href="#Contact"
-            smooth={true}
-            duration={300}
-            offset={-60}
+            onClick={handleContactClick}
             className="inline-flex min-h-11 cursor-pointer items-center rounded-lg border border-white/30 px-5 transition-colors hover:bg-white/10"
           >
             Contact me
-          </Link>
+          </a>
         </div>
       </div>
 

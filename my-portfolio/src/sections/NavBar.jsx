@@ -1,25 +1,83 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-scroll";
+import { useLenis } from "lenis/react";
 import logo from "../assets/SG-logo.png";
 import LineSlideButton from "../components/LineSlideButton";
 import { RESUME_URL } from "./Contact";
+
+const NAV_ITEMS = ["Home", "Experience", "Projects", "Skills", "Contact"];
+
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
   const lastScrollY = useRef(0);
+  const isNavClickScrolling = useRef(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const onScroll = () => {
       const currentY = window.scrollY;
-      setHidden(currentY > lastScrollY.current && currentY > 80);
+
+      // Active section spy
+      const scrollPos = currentY + 120;
+      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(NAV_ITEMS[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(NAV_ITEMS[i]);
+          break;
+        }
+      }
+
+      // Hide / show navbar based on scroll direction (with threshold buffer)
+      if (isNavClickScrolling.current) return;
+
+      if (currentY <= 80) {
+        setHidden(false);
+      } else if (currentY > lastScrollY.current + 8) {
+        setHidden(true);
+      } else if (currentY < lastScrollY.current - 8) {
+        setHidden(false);
+      }
+
       lastScrollY.current = currentY;
     };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavClick = (item) => {
+    setIsOpen(false);
+    setHidden(false);
+    setActiveSection(item);
+    isNavClickScrolling.current = true;
+
+    if (lenis) {
+      lenis.scrollTo(`#${item}`, {
+        offset: -70,
+        duration: 1.2,
+        onComplete: () => {
+          isNavClickScrolling.current = false;
+          lastScrollY.current = window.scrollY;
+        },
+      });
+    } else {
+      const el = document.getElementById(item);
+      el?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        isNavClickScrolling.current = false;
+        lastScrollY.current = window.scrollY;
+      }, 1000);
+    }
+  };
+
   return (
-    <nav aria-label="Main" className={`sticky top-0 mx-4 z-50 transition-transform duration-300 ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
+    <nav
+      aria-label="Main"
+      className={`sticky top-0 mx-4 z-50 transition-transform duration-300 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="flex justify-between items-center shadow-md backdrop-blur-xl bg-white/5 border border-t-0 border-gray-500 p-2 rounded-b-2xl ">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -69,26 +127,25 @@ export const NavBar = () => {
             isOpen ? "flex" : "hidden"
           }`}
         >
-          {["Home", "Experience", "Projects", "Skills", "Contact"].map(
-            (item) => (
-              <li
-                key={item}
-                className="cursor-pointer hover:text-blue-500 text-[#b6b7bb] md:text-base text-sm"
+          {NAV_ITEMS.map((item) => (
+            <li
+              key={item}
+              className={`cursor-pointer hover:text-blue-500 md:text-base text-sm ${
+                activeSection === item ? "text-blue-500" : "text-[#b6b7bb]"
+              }`}
+            >
+              <a
+                href={`#${item}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item);
+                }}
+                className="flex min-h-11 items-center md:min-h-0"
               >
-                <Link
-                  to={item}
-                  smooth={true}
-                  duration={300}
-                  offset={-60}
-                  spy={true}
-                  activeClass="text-blue-500"
-                  onClick={() => setIsOpen(false)}
-                  className="flex min-h-11 items-center md:min-h-0"
-                ><LineSlideButton text={item}/>
-                </Link>
-              </li>
-            )
-          )}
+                <LineSlideButton text={item} />
+              </a>
+            </li>
+          ))}
           <li>
             <a
               href={RESUME_URL}

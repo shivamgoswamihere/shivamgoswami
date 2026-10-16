@@ -9,7 +9,7 @@ const technical = {
     { name: 'Github', image: Icons.github },
     { name: 'Jenkins' },
     { name: 'Postman', image: Icons.postman },
-    { name: 'Claude AI' },
+    { name: 'Claude Code' },
     { name: 'Vite', image: Icons.vitejs },
     { name: 'Figma', image: Icons.figma },
   ],
@@ -25,7 +25,7 @@ const technical = {
     { name: 'Express.js', image: Icons.expressjs },
     { name: 'AWS DynamoDB' },
     { name: 'MongoDB', image: Icons.mongodb },
-    { name: 'Vitest / Jest', image: Icons.jest },
+    { name: 'MySQL', image: Icons.mysql },
   ],
 };
 

@@ -4,18 +4,18 @@ import RevealHeading from '../components/RevealHeading';
 const experience = [
   {
     company: "Voltuswave Technologies",
-    role: "Software Engineer",
+    role: "Software Engineer (Frontend)",
     type: "Full-time",
     start: "2025-07",
     projects: [
       {
-        stack: ["React 18", "TypeScript", "Redux Toolkit", "React Query", "MUI", "Node.js", "DynamoDB", "Vitest", "Jest", "Jenkins"],
+        stack: ["React 18", "TypeScript", "Redux Toolkit", "React Query", "MUI", "Node.js", "DynamoDB", "Git", "Jenkins"],
         highlights: [
-          "Shipped 20+ features and fixed 150+ bugs within a year on a production healthcare web platform, using React 18, TypeScript, Redux Toolkit, React Query and MUI, with unit tests in Vitest and Jest.",
-          "Built a token-efficient AI workflow with Claude (reusable skills, context compaction, project-level instructions) to deliver faster at lower cost, validating AI-generated code through code review, type checks and tests before release.",
+          "Built and launched a support management application in the VoltusFreight ERP product, with one shared schema and backend for web and mobile. In production with 5 clients (200+ tickets), with email and push notifications (new ticket, comment, status change, escalation, reassignment) that deep-link to the exact ticket.",
+          "Shipped 10+ features and fixed 140+ bugs within a year on a production healthcare web platform (React 18, TypeScript, Redux Toolkit, React Query, MUI).",
+          "Built a token-efficient AI workflow with Claude (reusable skills, context compaction, project-level instructions) to deliver faster at lower cost, using the Playwright MCP server for AI-driven browser test generation and reviewing AI-generated code and test results before release.",
           "Extended a Node.js/TypeScript user-service (DynamoDB) with new product capabilities, including user preferences and multi-program enrollment history, plus a reusable date-display utility.",
-          "Improved data accuracy and code reliability by filtering out invalid data before it reached users and adding strict typing to backend handlers, catching errors at build time instead of in production.",
-          "Built proofs of concept to validate new ideas, reviewed PRs, and supported QA → UAT → Production releases via Jenkins."
+          "Built POCs to test new ideas, and improved data accuracy and code reliability by filtering out invalid data and adding stricter typing to backend handlers."
         ]
       }
     ]
@@ -28,11 +28,11 @@ const experience = [
     end: "2025-06",
     projects: [
       {
-        stack: ["React.js", "JavaScript", "Node.js", "MongoDB", "REST APIs", "Postman"],
+        stack: ["React.js", "React Router", "Node.js", "Express.js", "JWT", "bcrypt"],
         highlights: [
-          "Designed dynamic single-page application features using React Router, ensuring smooth transitions and intuitive navigation.",
-          "Built and maintained reusable UI components, leading to a more organized and maintainable codebase.",
-          "Integrated JWT-based authentication and bcrypt for password hashing to ensure secure user access."
+          "Developed React single-page application features with React Router for smooth, intuitive navigation.",
+          "Built reusable UI components that kept the codebase consistent and easier to maintain.",
+          "Built REST APIs with Node.js and Express, secured with JWT authentication and bcrypt password hashing."
         ]
       }
     ]
@@ -41,7 +41,7 @@ const experience = [
     company: "ADRDE (DRDO)",
     role: "Front-End Developer Trainee",
     type: "Internship",
-    start: "2023-07",
+    start: "2023-06",
     end: "2023-08",
     projects: [
       {
@@ -76,11 +76,11 @@ const fullTimeYears = Math.floor(
 
 const stats = [
   { value: `${fullTimeYears}+ yrs`, label: "professional experience" },
-  { value: "20+", label: "features shipped" },
-  { value: "150+", label: "bugs fixed" },
+  { value: "10+", label: "features shipped" },
+  { value: "140+", label: "bugs fixed" },
 ];
 
-// Bold the numbers ("10+", "80+") so metrics stand out when skimming.
+// Bold the numbers ("10+", "140+") so metrics stand out when skimming.
 const emphasizeMetrics = text =>
   text.split(/(\d+\+)/).map((part, i) => (i % 2 ? <strong key={i} className="text-white">{part}</strong> : part));
 
